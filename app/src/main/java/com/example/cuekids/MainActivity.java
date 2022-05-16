@@ -48,29 +48,29 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if (getSupportActionBar() != null) {
+        /*if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        }*/
 
-        binding.webview.setWebViewClient(new MyWebViewClient(){
+        binding.webview.setWebViewClient(new MyWebViewClient()/*{
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
                 handler.proceed();
             }
-        });
+        }*/);
         WebSettings webSettings = binding.webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        /*webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webSettings.setDomStorageEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
         webSettings.setSupportZoom(true);
-        webSettings.setDefaultTextEncodingName("utf-8");
+        webSettings.setDefaultTextEncodingName("utf-8"); */
 
-        webSettings.setLoadsImagesAutomatically(true);
-        binding.webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        //webSettings.setLoadsImagesAutomatically(true);
+        //binding.webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         String url = "https://eclass.cuekids.in";
         setWebView(url);
 
@@ -82,14 +82,14 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             }, 4500);
         });
 
-        binding.swiperefresh.setColorSchemeColors(
+        /*binding.swiperefresh.setColorSchemeColors(
                 getResources().getColor(android.R.color.holo_blue_dark),
                 getResources().getColor(android.R.color.holo_orange_dark),
                 getResources().getColor(android.R.color.holo_green_dark),
                 getResources().getColor(android.R.color.holo_red_dark)
-        );
+        );*/
 
-        binding.logoutbutton.setOnClickListener(v -> {
+        /*binding.logoutbutton.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Are you sure");
             builder.setMessage("You want to logout ?");
@@ -109,11 +109,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
-        });
+        });*/
     }
 
     private void setWebView(String url) {
-
         if (checkConnectivity()) {
             binding.webview.setVisibility(View.VISIBLE);
             binding.noInternetLayout.setVisibility(View.GONE);

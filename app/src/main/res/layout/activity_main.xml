@@ -33,7 +33,8 @@
             android:layout_marginBottom="5dp"
             android:text="No Internet"
             android:textColor="@color/purple_700"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            tools:ignore="HardcodedText" />
 
 <!--        <com.airbnb.lottie.LottieAnimationView-->
 <!--            android:layout_width="match_parent"-->
@@ -50,7 +51,8 @@
             android:layout_marginTop="7dp"
             android:text="Try to Refresh"
             android:textColor="@color/purple_700"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
-
 import com.example.cuekids.databinding.ActivityLoginBinding;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
@@ -38,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     Animation btgone, btgtwo;
     SharedPreferences shp;
     SharedPreferences.Editor shpEditor;
-    String nameFromDB, emailFromDB, phoneFromDB, phone, newAccount = "";
+    String nameFromDB, emailFromDB, ageFromDB, genderFromDB, phoneFromDB, countryFromDB, phone, newAccount = "";
     FirebaseAuth mAuth;
     String verificationId;
     private SMSReceiver smsReceiver;
@@ -49,9 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        /*FirebaseApp.initializeApp(this);
-        mAuth = FirebaseAuth.getInstance();*/
+        FirebaseApp.initializeApp(this);
+        mAuth = FirebaseAuth.getInstance();
 
         binding.progressBar.getProgress();
         binding.progressBar.setVisibility(View.GONE);
@@ -60,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.animationpurposebuttonslayout.startAnimation(btgone);
         binding.animationpurposeloginbuttonlayout.startAnimation(btgtwo);
 
-        /*binding.btnlogin.setOnClickListener(v -> {
+        binding.btnlogin.setOnClickListener(v -> {
             if (!validatePhone())
                 return;
             Toast.makeText(LoginActivity.this, "Please Wait!", Toast.LENGTH_SHORT).show();
@@ -74,13 +72,12 @@ public class LoginActivity extends AppCompatActivity {
             binding.progressBar.setVisibility(View.VISIBLE);
             binding.progressBar.startAnimation(btgtwo);
             verifyCode(Objects.requireNonNull(binding.otpinputlayout.getEditText()).getText().toString());
-        });*/
+        });
     }
 
-    /*private void startSMSListener() {
+    private void startSMSListener() {
         try {
             smsReceiver = new SMSReceiver();
-
             IntentFilter intentFilter = new IntentFilter();
             intentFilter.addAction(SmsRetriever.SMS_RETRIEVED_ACTION);
             this.registerReceiver(smsReceiver, intentFilter);
@@ -95,16 +92,13 @@ public class LoginActivity extends AppCompatActivity {
                         smsReceiver = null;
                     }
                 }
-
                 @Override
                 public void onOTPTimeOut() {
                 }
-
                 @Override
                 public void onOTPReceivedError(String error) {
                 }
             });
-
             SmsRetrieverClient client = SmsRetriever.getClient(this);
             Task<Void> task = client.startSmsRetriever();
             task.addOnSuccessListener(aVoid -> {
@@ -124,21 +118,20 @@ public class LoginActivity extends AppCompatActivity {
         if (smsReceiver != null) {
             unregisterReceiver(smsReceiver);
         }
-    }*/
+    }
 
-    private Boolean validatePhone() {
+    private boolean validatePhone() {
         String val = Objects.requireNonNull(binding.phoneinputlayout.getEditText()).getText().toString();
         if (val.isEmpty()) {
-            Toast.makeText(LoginActivity.this, "Phone Number Field cannot be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Enter your Phone Number", Toast.LENGTH_SHORT).show();
             binding.phoneinputlayout.requestFocus();
             return false;
         } else
             return true;
     }
 
-    private Boolean validateOTP() {
+    private boolean validateOTP() {
         String val = Objects.requireNonNull(binding.otpinputlayout.getEditText()).getText().toString();
-
         if (val.isEmpty()) {
             Toast.makeText(LoginActivity.this, "OTP field cannot be empty", Toast.LENGTH_SHORT).show();
             binding.otpinputlayout.requestFocus();
@@ -151,20 +144,21 @@ public class LoginActivity extends AppCompatActivity {
             return true;
     }
 
-
-    /*private void isUser() {
+    private void isUser() {
         phone = "+91" + Objects.requireNonNull(binding.phoneinputlayout.getEditText()).getText().toString().trim();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUser = reference.orderByChild("phone").equalTo(phone);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 if (dataSnapshot.exists()) {
                     newAccount = "no";
                     nameFromDB = dataSnapshot.child(phone).child("name").getValue(String.class);
                     emailFromDB = dataSnapshot.child(phone).child("email").getValue(String.class);
+                    ageFromDB = dataSnapshot.child(phone).child("age").getValue(String.class);
+                    genderFromDB = dataSnapshot.child(phone).child("gender").getValue(String.class);
                     phoneFromDB = dataSnapshot.child(phone).child("phone").getValue(String.class);
+                    countryFromDB = dataSnapshot.child(phone).child("country").getValue(String.class);
                 } else {
                     newAccount = "yes";
                 }
@@ -176,77 +170,62 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "We are sending you an OTP", Toast.LENGTH_SHORT).show();
                 sendVerificationCode(phone);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-    }*/
+    }
 
-    /*private void signInWithCredential(PhoneAuthCredential credential) {
+    private void redirecting()
+    {
+        if(newAccount.equals("yes")) {
+            Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
+            i.putExtra("phone", phone);
+            startActivity(i);
+        }
+        else {
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+            Query checkUser = reference.orderByChild("phone").equalTo(phoneFromDB);
+            checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        userHelperClass helperClass = new userHelperClass(nameFromDB, emailFromDB, ageFromDB, genderFromDB, phoneFromDB, countryFromDB);
+                        reference.child(phoneFromDB).setValue(helperClass);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("name", nameFromDB);
+                        intent.putExtra("email", emailFromDB);
+                        intent.putExtra("age", ageFromDB);
+                        intent.putExtra("gender", genderFromDB);
+                        intent.putExtra("phone", phoneFromDB);
+                        intent.putExtra("country", countryFromDB);
+                        shp = getSharedPreferences("myPreferences", MODE_PRIVATE);
+                        shpEditor = shp.edit();
+                        shpEditor.putString("name", nameFromDB);
+                        shpEditor.putString("email", emailFromDB);
+                        shpEditor.putString("age", ageFromDB);
+                        shpEditor.putString("gender", genderFromDB);
+                        shpEditor.putString("phone", phoneFromDB);
+                        shpEditor.putString("country", countryFromDB);
+                        shpEditor.apply();
+                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+    }
+
+    private void signInWithCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "Your phone number has been verified successfully !", Toast.LENGTH_SHORT).show();
-                        if (newAccount.equals("yes")) {
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-                            Query checkUser = reference.orderByChild("phone").equalTo(phone);
-                            checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if (!dataSnapshot.exists()) {
-                                        userHelperClass helperClass = new userHelperClass("", "", phone);
-                                        reference.child(phone).setValue(helperClass);
-                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        intent.putExtra("name", "");
-                                        intent.putExtra("email", "");
-                                        intent.putExtra("phone", phone);
-                                        shp = getSharedPreferences("myPreferences", MODE_PRIVATE);
-                                        shpEditor = shp.edit();
-                                        shpEditor.putString("name", "");
-                                        shpEditor.putString("email", "");
-                                        shpEditor.putString("phone", phone);
-                                        shpEditor.apply();
-                                        Toast.makeText(LoginActivity.this, "Account successfully created", Toast.LENGTH_SHORT).show();
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        startActivity(intent);
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-                                }
-                            });
-                        } else {
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-                            Query checkUser = reference.orderByChild("phone").equalTo(phoneFromDB);
-                            checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if (dataSnapshot.exists()) {
-                                        userHelperClass helperClass = new userHelperClass(nameFromDB, emailFromDB, phoneFromDB);
-                                        reference.child(phoneFromDB).setValue(helperClass);
-                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        intent.putExtra("name", nameFromDB);
-                                        intent.putExtra("email", emailFromDB);
-                                        intent.putExtra("phone", phoneFromDB);
-                                        shp = getSharedPreferences("myPreferences", MODE_PRIVATE);
-                                        shpEditor = shp.edit();
-                                        shpEditor.putString("name", nameFromDB);
-                                        shpEditor.putString("email", emailFromDB);
-                                        shpEditor.putString("phone", phoneFromDB);
-                                        shpEditor.apply();
-                                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        startActivity(intent);
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-                                }
-                            });
-                        }
+                        redirecting();
                     }
                 });
     }
@@ -285,5 +264,5 @@ public class LoginActivity extends AppCompatActivity {
     private void verifyCode(String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithCredential(credential);
-    }*/
+    }
 }
