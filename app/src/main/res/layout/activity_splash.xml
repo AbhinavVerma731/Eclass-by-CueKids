@@ -4,7 +4,7 @@
     android:id="@+id/splash_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
+    android:background="#FFBCBF"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".SplashActivity">
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@color/purple_200"
+        android:background="#FFBCBF"
         android:src="@drawable/logo"
         tools:ignore="ContentDescription,MissingConstraints" />
 

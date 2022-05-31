@@ -32,7 +32,7 @@
         android:id="@+id/buttonAnimationLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -48,7 +48,6 @@
                 android:id="@+id/subLayoutOne"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:weightSum="1"
                 android:layout_marginEnd="5dp">
@@ -57,8 +56,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
                     android:layout_weight="0.1"
                     android:src="@drawable/ic_baseline_person_24"
                     tools:ignore="ContentDescription,NestedWeights"
@@ -203,7 +200,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/mlight"
                         android:hint="Email Id"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
@@ -221,7 +218,6 @@
                 android:id="@+id/subLayoutFour"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:weightSum="1"
                 android:layout_marginStart="5dp">
@@ -274,124 +270,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layoutThree"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            tools:ignore="DisableBaselineAlignment">
-
-            <LinearLayout
-                android:id="@+id/subLayoutFive"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:weightSum="1"
-                android:layout_marginEnd="5dp">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="0.1"
-                    android:src="@drawable/ic_baseline_accessibility_24"
-                    tools:ignore="ContentDescription,NestedWeights,RtlHardcoded" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/genderInputLayout"
-                    android:layout_weight="0.9"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:hintTextColor="@color/black"
-                    tools:ignore="RtlHardcoded">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/genderEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/mlight"
-                        android:hint="Gender"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textColorLink="#000000"
-                        android:textSize="10sp"
-                        tools:ignore="HardcodedText,SmallSp">
-
-                    </com.google.android.material.textfield.TextInputEditText>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/subLayoutSix"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:weightSum="1"
-                tools:ignore="RtlHardcoded">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="0.1"
-                    android:src="@drawable/ic_baseline_home_24"
-                    tools:ignore="ContentDescription,NestedWeights" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:id="@+id/countryInputLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="0.9"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:hintTextColor="@color/black"
-                    tools:ignore="RtlHardcoded">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/countryEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/mlight"
-                        android:hint="Country"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textColorLink="#000000"
-                        android:textSize="10sp"
-                        tools:ignore="HardcodedText,SmallSp">
-
-                    </com.google.android.material.textfield.TextInputEditText>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
     </LinearLayout>
 
     <Button
@@ -402,7 +280,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/calibri"
         android:gravity="center"
-        android:text="SignUp"
+        android:text="Sign Up"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="17sp"

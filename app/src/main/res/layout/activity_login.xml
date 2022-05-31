@@ -37,27 +37,29 @@
             android:id="@+id/animationpurposebuttonslayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="15dp"
-            android:layout_weight="2"
             android:layout_marginTop="70dp"
+            android:layout_weight="2"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal"
             tools:ignore="UselessParent">
 
-            <ImageView
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/countryCodeHolder"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0.3"
-                android:src="@drawable/ic_baseline_local_phone_24"
-                tools:ignore="ContentDescription,NestedWeights" />
+                android:layout_weight="0.7"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                android:layout_height="40dp"
+                tools:ignore="NestedWeights" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phoneinputlayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginRight="22.5dp"
-                android:layout_weight="1.7"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1.3"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
@@ -86,47 +88,28 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-
     <LinearLayout
         android:id="@+id/animationpurposeloginbuttonlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="15dp"
-            android:layout_weight="2"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0.3"
-                tools:ignore="ContentDescription,NestedWeights" />
-
-            <Button
-                android:id="@+id/btnlogin"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="22.5dp"
-                android:layout_weight="1.7"
-                android:fontFamily="@font/mregular"
-                android:gravity="center"
-                android:text="Next"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="17sp"
-                app:backgroundTint="@color/purple_500"
-                app:iconTint="#48B9AC"
-                app:rippleColor="#48B9AC"
-                tools:ignore="HardcodedText"
-                android:layout_marginRight="22.5dp" />
+        <Button
+            android:id="@+id/btnlogin"
+            android:layout_width="300dp"
+            android:layout_height="53dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/mregular"
+            android:gravity="center"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="17sp"
+            app:backgroundTint="@color/purple_500"
+            app:iconTint="#48B9AC"
+            app:rippleColor="#48B9AC"
+            tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
@@ -153,7 +136,7 @@
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="@color/white"
+            app:hintTextColor="@color/black"
             tools:ignore="RtlHardcoded">
 
             <com.google.android.material.textfield.TextInputEditText

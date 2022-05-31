@@ -3,6 +3,7 @@ package com.example.cuekids;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -37,9 +38,10 @@ public class LoginActivity extends AppCompatActivity {
     Animation btgone, btgtwo;
     SharedPreferences shp;
     SharedPreferences.Editor shpEditor;
-    String nameFromDB, emailFromDB, ageFromDB, genderFromDB, phoneFromDB, countryFromDB, phone, newAccount = "";
+    String nameFromDB, emailFromDB, ageFromDB, phoneFromDB, imageUrlFromDB, phone, newAccount = "";
     FirebaseAuth mAuth;
     String verificationId;
+    String countryCode;
     private SMSReceiver smsReceiver;
 
     @Override
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
 
@@ -121,6 +124,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean validatePhone() {
+        String code = binding.countryCodeHolder.getSelectedCountryCodeWithPlus();
+        if (code.isEmpty()) {
+            Toast.makeText(LoginActivity.this, "Please select Country", Toast.LENGTH_SHORT).show();
+            binding.phoneinputlayout.requestFocus();
+            return false;
+        }
         String val = Objects.requireNonNull(binding.phoneinputlayout.getEditText()).getText().toString();
         if (val.isEmpty()) {
             Toast.makeText(LoginActivity.this, "Enter your Phone Number", Toast.LENGTH_SHORT).show();
@@ -145,10 +154,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void isUser() {
-        phone = "+91" + Objects.requireNonNull(binding.phoneinputlayout.getEditText()).getText().toString().trim();
+        countryCode = binding.countryCodeHolder.getSelectedCountryCodeWithPlus();
+        phone = countryCode + Objects.requireNonNull(binding.phoneinputlayout.getEditText()).getText().toString().trim();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUser = reference.orderByChild("phone").equalTo(phone);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -156,15 +167,16 @@ public class LoginActivity extends AppCompatActivity {
                     nameFromDB = dataSnapshot.child(phone).child("name").getValue(String.class);
                     emailFromDB = dataSnapshot.child(phone).child("email").getValue(String.class);
                     ageFromDB = dataSnapshot.child(phone).child("age").getValue(String.class);
-                    genderFromDB = dataSnapshot.child(phone).child("gender").getValue(String.class);
                     phoneFromDB = dataSnapshot.child(phone).child("phone").getValue(String.class);
-                    countryFromDB = dataSnapshot.child(phone).child("country").getValue(String.class);
+                    imageUrlFromDB = dataSnapshot.child(phone).child("imageUrl").getValue(String.class);
                 } else {
                     newAccount = "yes";
                 }
                 binding.animationpurposebuttonslayout.setVisibility(View.GONE);
                 binding.animationpurposeloginbuttonlayout.setVisibility(View.GONE);
                 binding.otplayout.setVisibility(View.VISIBLE);
+                if(newAccount.equals("yes"))
+                    binding.finalloginbutton.setText("Next");
                 binding.otpinputlayout.startAnimation(btgone);
                 binding.finalloginbutton.startAnimation(btgtwo);
                 Toast.makeText(LoginActivity.this, "We are sending you an OTP", Toast.LENGTH_SHORT).show();
@@ -190,23 +202,21 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        userHelperClass helperClass = new userHelperClass(nameFromDB, emailFromDB, ageFromDB, genderFromDB, phoneFromDB, countryFromDB);
+                        userHelperClass helperClass = new userHelperClass(nameFromDB, emailFromDB, ageFromDB, phoneFromDB, imageUrlFromDB);
                         reference.child(phoneFromDB).setValue(helperClass);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("name", nameFromDB);
                         intent.putExtra("email", emailFromDB);
                         intent.putExtra("age", ageFromDB);
-                        intent.putExtra("gender", genderFromDB);
                         intent.putExtra("phone", phoneFromDB);
-                        intent.putExtra("country", countryFromDB);
+                        intent.putExtra("url", imageUrlFromDB);
                         shp = getSharedPreferences("myPreferences", MODE_PRIVATE);
                         shpEditor = shp.edit();
                         shpEditor.putString("name", nameFromDB);
                         shpEditor.putString("email", emailFromDB);
                         shpEditor.putString("age", ageFromDB);
-                        shpEditor.putString("gender", genderFromDB);
                         shpEditor.putString("phone", phoneFromDB);
-                        shpEditor.putString("country", countryFromDB);
+                        shpEditor.putString("url", imageUrlFromDB);
                         shpEditor.apply();
                         Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

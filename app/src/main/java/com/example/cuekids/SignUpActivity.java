@@ -25,7 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private ActivitySignUpBinding binding;
     Animation btgone, btgtwo;
-    String name, email, age, gender, phone, country;
+    String name, email, age, phone;
     SharedPreferences shp;
     SharedPreferences.Editor shpEditor;
 
@@ -49,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
         binding.btnSignup.startAnimation(btgtwo);
 
         binding.btnSignup.setOnClickListener(v -> {
-            if(validateFirstName() && validateLastName() && validateEmail() && validateAge() && validateGender() && validateCountry())
+            if(validateFirstName() && validateLastName() && validateEmail() && validateAge())
                 signUpUser();
         });
     }
@@ -94,65 +94,34 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
     }
 
-    private boolean validateGender() {
-        String val = Objects.requireNonNull(binding.genderInputLayout.getEditText()).getText().toString();
-        if (val.isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
-            binding.genderInputLayout.requestFocus();
-            return false;
-        }
-        else if(!val.equals("Male") && !val.equals("Female")) {
-            Toast.makeText(SignUpActivity.this, "Enter Male or Female", Toast.LENGTH_SHORT).show();
-            binding.genderInputLayout.requestFocus();
-            return false;
-        } else
-            return true;
-    }
-
-    private boolean validateCountry() {
-        String val = Objects.requireNonNull(binding.countryInputLayout.getEditText()).getText().toString();
-        if (val.isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
-            binding.countryInputLayout.requestFocus();
-            return false;
-        } else
-            return true;
-    }
-
     public void signUpUser()
     {
         binding.progressBar.setVisibility(View.VISIBLE);
         binding.progressBar.startAnimation(btgtwo);
         String firstName = Objects.requireNonNull(binding.firstNameInputLayout.getEditText()).getText().toString();
-        String lastName = Objects.requireNonNull(binding.firstNameInputLayout.getEditText()).getText().toString();
-        name = firstName+lastName;
+        String lastName = Objects.requireNonNull(binding.lastNameInputLayout.getEditText()).getText().toString();
+        name = firstName + " " + lastName;
         email = Objects.requireNonNull(binding.emailIdInputLayout.getEditText()).getText().toString();
         age = Objects.requireNonNull(binding.ageInputLayout.getEditText()).getText().toString();
-        gender = Objects.requireNonNull(binding.genderInputLayout.getEditText()).getText().toString();
-        country = Objects.requireNonNull(binding.countryInputLayout.getEditText()).getText().toString();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUser = reference.orderByChild("phone").equalTo(phone);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()) {
-                    userHelperClass helperClass = new userHelperClass(name, email, age, gender, phone, country);
+                    userHelperClass helperClass = new userHelperClass(name, email, age, phone, "empty");
                     reference.child(phone).setValue(helperClass);
                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                     intent.putExtra("name", name);
                     intent.putExtra("email", email);
                     intent.putExtra("age", age);
-                    intent.putExtra("gender", gender);
                     intent.putExtra("phone", phone);
-                    intent.putExtra("country", country);
                     shp = getSharedPreferences("myPreferences", MODE_PRIVATE);
                     shpEditor = shp.edit();
                     shpEditor.putString("name", name);
                     shpEditor.putString("email", email);
                     shpEditor.putString("age", age);
-                    shpEditor.putString("gender", gender);
                     shpEditor.putString("phone", phone);
-                    shpEditor.putString("country", country);
                     shpEditor.apply();
                     Toast.makeText(SignUpActivity.this, "Account successfully created", Toast.LENGTH_SHORT).show();
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

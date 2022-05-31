@@ -2,18 +2,17 @@ package com.example.cuekids;
 
 public class userHelperClass {
 
-    String name, email, age, gender, phone, country;
+    String name, email, age, phone, imageUrl;
 
     public userHelperClass() {
     }
 
-    public userHelperClass(String name, String email, String age, String gender, String phone, String country) {
+    public userHelperClass(String name, String email, String age, String phone, String imageUrl) {
         this.name = name;
         this.email = email;
         this.age = age;
-        this.gender = gender;
         this.phone = phone;
-        this.country = country;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -40,14 +39,6 @@ public class userHelperClass {
         this.age = age;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -56,11 +47,11 @@ public class userHelperClass {
         this.phone = phone;
     }
 
-    public String getCountry() {
-        return country;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
