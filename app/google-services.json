@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "432161166242",
+    "firebase_url": "https://cuekids-f283b-default-rtdb.firebaseio.com",
+    "project_id": "cuekids-f283b",
+    "storage_bucket": "cuekids-f283b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432161166242:android:2e115dbc31f30a2f1c18fb",
+        "android_client_info": {
+          "package_name": "com.example.cuekids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432161166242-ok7nbsd4ue96ga1klenl1rkap53ptlsa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2vOHccvI6hw0CgO9hPkDUbTaLiXfcc_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432161166242-ok7nbsd4ue96ga1klenl1rkap53ptlsa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
