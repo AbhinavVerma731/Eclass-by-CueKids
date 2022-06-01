@@ -67,7 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
     private boolean validateLastName() {
         String val = Objects.requireNonNull(binding.lastNameInputLayout.getEditText()).getText().toString();
         if (val.isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Field field cannot be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUpActivity.this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             binding.lastNameInputLayout.requestFocus();
             return false;
         } else
