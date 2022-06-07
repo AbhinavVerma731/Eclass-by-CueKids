@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/purple_200"
+    tools:context=".WelcomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/layout_border">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="320dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/sliderDots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical|center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gotham"
+        android:textSize="26sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="15dp"
+        android:text="CueKids HighLights!" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:weightSum="2">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src="@drawable/fui_ic_check_circle_black_128dp"
+            android:layout_weight="0.5" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibri"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="Abcdef Ghijkl" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:weightSum="2">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src="@drawable/fui_ic_check_circle_black_128dp"
+            android:layout_weight="0.5" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibri"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="Mnopq Qrst" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src="@drawable/fui_ic_check_circle_black_128dp"
+            android:layout_weight="0.5" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibri"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="Uvw Xyz" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/goToLogin"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:layout_gravity="end"
+        android:textColor="@color/black"
+        android:fontFamily="@font/calibri"
+        android:background="@drawable/button_shape"
+        android:layout_marginEnd="20dp"
+        android:text="Let's GO" />
+
+    </LinearLayout>
+
+</LinearLayout>

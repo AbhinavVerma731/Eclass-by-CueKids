@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:432161166242:android:2e115dbc31f30a2f1c18fb",
+        "mobilesdk_app_id": "1:432161166242:android:7c38d18221800ad41c18fb",
         "android_client_info": {
-          "package_name": "com.example.cuekids"
+          "package_name": "com.cuekids.eclass"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "432161166242-a7u8irkjf6dg8akh8ssu3n9o8s41uh5f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cuekids.eclass",
+            "certificate_hash": "6863777f75d0ded227895c4646add277729a0fcc"
+          }
+        },
         {
           "client_id": "432161166242-ok7nbsd4ue96ga1klenl1rkap53ptlsa.apps.googleusercontent.com",
           "client_type": 3

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.cuekids">
+    package="com.cuekids.eclass">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -29,8 +29,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".SignUpActivity"
+        <activity android:name=".WelcomeActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -48,6 +47,15 @@
         </activity>
 
         <activity
+            android:name=".SignUpActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            tools:ignore="LockedOrientationActivity">
+        </activity>
+
+        <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
@@ -56,7 +64,8 @@
             tools:ignore="LockedOrientationActivity">
         </activity>
 
-        <activity android:name=".WebViewActivity"
+        <activity
+            android:name=".WebViewActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -72,6 +81,7 @@
                 <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>
