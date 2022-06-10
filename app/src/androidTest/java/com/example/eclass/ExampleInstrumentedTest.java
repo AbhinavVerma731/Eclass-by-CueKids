@@ -1,4 +1,4 @@
-package com.cuekids.cuekids;
+package com.cuekids.eclass;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -20,6 +20,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.cuekids", appContext.getPackageName());
+        assertEquals("com.cuekids.eclass", appContext.getPackageName());
     }
 }

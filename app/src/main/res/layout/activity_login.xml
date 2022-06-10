@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/purple_200"
     android:orientation="vertical"
+    android:theme="@style/Theme.MaterialComponents"
     tools:context=".LoginActivity">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -19,13 +20,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-130dp"
         android:fontFamily="@font/gotham"
         android:gravity="center_horizontal"
-        android:paddingBottom="25dp"
+        android:paddingBottom="5dp"
         android:text="Hey! Champ 🏆"
-        android:textSize="26sp"
-        android:layout_marginTop="-150dp"
         android:textColor="@color/black"
+        android:textSize="26sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
@@ -34,10 +35,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/gotham"
         android:gravity="center_horizontal"
-        android:paddingBottom="25dp"
+        android:paddingBottom="5dp"
         android:text="Welcome to"
-        android:textSize="26sp"
         android:textColor="@color/black"
+        android:textSize="26sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
@@ -46,40 +47,49 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/gotham"
         android:gravity="center_horizontal"
-        android:paddingBottom="25dp"
+        android:paddingBottom="35dp"
         android:text="EClass by CueKids"
-        android:textSize="26sp"
         android:textColor="@color/black"
+        android:textSize="26sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
     <LinearLayout
+        android:id="@+id/phoneLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
-        android:layout_marginBottom="-150dp"
-        android:id="@+id/phoneLayout"
+        android:layout_marginBottom="-130dp"
         android:background="@drawable/layout_border"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/animationpurposebuttonslayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp"
-            android:weightSum="2"
             android:layout_marginBottom="15dp"
             android:orientation="horizontal"
+            android:weightSum="2"
             tools:ignore="UselessParent">
 
             <com.hbb20.CountryCodePicker
                 android:id="@+id/countryCodeHolder"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="5dp"
-                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                app:ccpDialog_backgroundColor="@color/white"
+                app:ccpDialog_fastScroller_bubbleColor="#000000"
+                app:ccpDialog_fastScroller_handleColor="#FFFFFF"
+                app:ccpDialog_searchEditTextTint="#FFFFFF"
+                app:ccpDialog_textColor="#000000"
+                app:ccp_arrowColor="#000000"
+                app:ccp_contentColor="#000000"
+                app:ccp_flagBorderColor="#FFFFFF"
                 tools:ignore="NestedWeights" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -89,12 +99,14 @@
                 android:layout_height="60dp"
                 android:layout_marginRight="25dp"
                 android:layout_weight="1"
+                android:textColorHint="@color/black"
+                android:textStyle="bold"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
-                android:textStyle="bold"
                 app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/black"
                 app:hintTextColor="#000000"
                 tools:ignore="RtlHardcoded">
 
@@ -105,12 +117,12 @@
                     android:fontFamily="@font/mlight"
                     android:hint="Phone Number"
                     android:inputType="number"
-                    android:textStyle="bold"
                     android:maxLines="1"
                     android:textColor="#000000"
                     android:textColorHint="@color/black"
                     android:textColorLink="#000000"
                     android:textSize="13sp"
+                    android:textStyle="bold"
                     tools:ignore="HardcodedText">
 
                 </com.google.android.material.textfield.TextInputEditText>
@@ -119,30 +131,30 @@
 
         </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/animationpurposeloginbuttonlayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="60dp"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btnlogin"
+        <LinearLayout
+            android:id="@+id/animationpurposeloginbuttonlayout"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:fontFamily="@font/mregular"
-            android:gravity="center"
-            android:text="Next"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            android:textSize="17sp"
-            app:backgroundTint="@color/purple_500"
-            app:iconTint="#48B9AC"
-            app:rippleColor="#48B9AC"
-            tools:ignore="HardcodedText" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="60dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnlogin"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:fontFamily="@font/mregular"
+                android:gravity="center"
+                android:text="Next"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                app:backgroundTint="@color/purple_500"
+                app:iconTint="#48B9AC"
+                app:rippleColor="#48B9AC"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
@@ -150,29 +162,31 @@
 
     <LinearLayout
         android:id="@+id/otplayout"
-        android:visibility="gone"
-        android:layout_marginBottom="-150dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="-130dp"
         android:background="@drawable/layout_border"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/otpinputlayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:layout_marginTop="70dp"
             android:layout_gravity="center"
+            android:layout_marginTop="70dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
+            android:textColorHint="@color/black"
+            android:textStyle="bold"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/black"
             app:hintTextColor="@color/black"
-            android:textStyle="bold"
             tools:ignore="RtlHardcoded">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -183,7 +197,6 @@
                 android:fontFamily="@font/mlight"
                 android:gravity="center"
                 android:hint="Enter OTP"
-                android:textStyle="bold"
                 android:inputType="number"
                 android:maxLength="6"
                 android:maxLines="1"
@@ -191,6 +204,7 @@
                 android:textColorHint="#000000"
                 android:textColorLink="#000000"
                 android:textSize="13sp"
+                android:textStyle="bold"
                 tools:ignore="HardcodedText">
 
             </com.google.android.material.textfield.TextInputEditText>

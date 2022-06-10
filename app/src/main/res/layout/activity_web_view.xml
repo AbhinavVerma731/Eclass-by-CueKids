@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WebViewActivity">
@@ -32,8 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="No Internet"
             android:fontFamily="@font/gotham"
+            android:text="No Internet"
             android:textColor="@color/purple_500"
             android:textSize="30sp"
             tools:ignore="HardcodedText" />
@@ -51,8 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="Try to Refresh"
             android:fontFamily="@font/gotham"
+            android:text="Try to Refresh"
             android:textColor="@color/purple_500"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />

@@ -142,43 +142,32 @@ public class MainActivity extends AppCompatActivity  {
 
         binding.nameUpdateButton.setOnClickListener(v -> {
             String tempName = binding.nameInputLayout.getEditText().getText().toString();
-            if(tempName.equals(name) || !validateName())
-                return;
-            else
+            if(!tempName.equals(name) && validateName())
                 updateName(tempName);
         });
 
         binding.phoneUpdateButton.setOnClickListener(v -> {
             tempPhone = binding.phoneInputLayout.getEditText().getText().toString();
-            if(tempPhone.equals(phone) || !validatePhone())
-                return;
-            else
-            {
+            if(!tempPhone.equals(phone) && validatePhone())
                 alreadyExists();
-            }
         });
 
         binding.emailUpdateButton.setOnClickListener(v -> {
             String tempEmail = binding.emailIdInputLayout.getEditText().getText().toString();
-            if(tempEmail.equals(email) || !validateEmail())
-                return;
-            else
+            if(!tempEmail.equals(email) && validateEmail())
                 updateEmail(tempEmail);
         });
 
         binding.ageUpdateButton.setOnClickListener(v -> {
             String tempAge = binding.ageInputLayout.getEditText().getText().toString();
-            if(tempAge.equals(age) || !validateAge())
-                return;
-            else
+            if(!tempAge.equals(age) && validateAge())
                 updateAge(tempAge);
+
         });
 
         binding.otpButton.setOnClickListener(v -> {
             String otp = Objects.requireNonNull(binding.otpInputLayout.getEditText()).getText().toString();
-            if(!validateOTP())
-                return;
-            else {
+            if (validateOTP()) {
                 verifyCode(otp);
             }
         });

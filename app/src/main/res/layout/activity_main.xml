@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:theme="@style/Theme.MaterialComponents"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -33,13 +34,15 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="110dp"
                 android:layout_height="110dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="50dp">
 
                 <ImageView
                     android:id="@+id/iupload"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/ic_baseline_person_24" />
 
             </androidx.cardview.widget.CardView>
 
@@ -94,14 +97,16 @@
                     android:id="@+id/nameInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0.8"
+                    android:textColorHint="@color/black"
                     android:textStyle="bold"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
                     app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/black"
                     app:hintTextColor="@color/black"
                     tools:ignore="RtlHardcoded">
 
@@ -113,11 +118,11 @@
                         android:hint="Name"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:textStyle="bold"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textColorLink="#000000"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp">
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -127,12 +132,12 @@
                 <ImageView
                     android:id="@+id/nameUpdateButton"
                     android:layout_width="0dp"
-                    android:visibility="invisible"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="2dp"
                     android:layout_weight="0.1"
-                    android:src="@drawable/ic_baseline_check_circle_24"
+                    android:src="@drawable/tick_peach"
+                    android:visibility="invisible"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>
@@ -159,16 +164,18 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/phoneInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:visibility="visible"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0.8"
-                    app:boxBackgroundMode="outline"
+                    android:textColorHint="@color/black"
                     android:textStyle="bold"
+                    android:visibility="visible"
+                    app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
                     app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/black"
                     app:hintTextColor="@color/black"
                     tools:ignore="RtlHardcoded">
 
@@ -180,12 +187,12 @@
                         android:fontFamily="@font/mlight"
                         android:hint="Phone Number"
                         android:inputType="number"
-                        android:textStyle="bold"
                         android:maxLines="1"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textColorLink="#000000"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp">
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -196,9 +203,9 @@
                     android:id="@+id/otpInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
-                    android:visibility="gone"
                     android:layout_height="50dp"
                     android:layout_weight="0.8"
+                    android:visibility="gone"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
@@ -230,25 +237,25 @@
                 <ImageView
                     android:id="@+id/phoneUpdateButton"
                     android:layout_width="0dp"
-                    android:visibility="invisible"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="2dp"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="0.1"
-                    android:src="@drawable/ic_baseline_check_circle_24"
+                    android:src="@drawable/tick_peach"
+                    android:visibility="invisible"
                     tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:id="@+id/otpButton"
                     android:layout_width="0dp"
-                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="2dp"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="0.1"
-                    android:src="@drawable/ic_baseline_check_circle_24"
+                    android:src="@drawable/tick_peach"
+                    android:visibility="gone"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>
@@ -287,14 +294,16 @@
                     android:id="@+id/emailIdInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0.8"
-                    app:boxBackgroundMode="outline"
+                    android:textColorHint="@color/black"
                     android:textStyle="bold"
+                    app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
                     app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/black"
                     app:hintTextColor="@color/black"
                     tools:ignore="RtlHardcoded">
 
@@ -305,12 +314,12 @@
                         android:fontFamily="@font/mlight"
                         android:hint="Email Id"
                         android:inputType="text"
-                        android:textStyle="bold"
                         android:maxLines="1"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textColorLink="#000000"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp">
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -318,14 +327,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
+                    android:id="@+id/emailUpdateButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="2dp"
-                    android:id="@+id/emailUpdateButton"
-                    android:visibility="invisible"
                     android:layout_weight="0.1"
-                    android:src="@drawable/ic_baseline_check_circle_24"
+                    android:src="@drawable/tick_peach"
+                    android:visibility="invisible"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>
@@ -354,14 +363,16 @@
                     android:id="@+id/ageInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0.8"
+                    android:textColorHint="@color/black"
+                    android:textStyle="bold"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    android:textStyle="bold"
                     app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/black"
                     app:hintTextColor="@color/black"
                     tools:ignore="RtlHardcoded">
 
@@ -371,14 +382,14 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/mlight"
                         android:hint="Age"
-                        android:textStyle="bold"
                         android:inputType="number"
                         android:maxLength="3"
                         android:maxLines="1"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textColorLink="#000000"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp">
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -386,15 +397,15 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
+                    android:id="@+id/ageUpdateButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="2dp"
                     android:layout_marginEnd="5dp"
-                    android:visibility="invisible"
-                    android:id="@+id/ageUpdateButton"
                     android:layout_weight="0.1"
-                    android:src="@drawable/ic_baseline_check_circle_24"
+                    android:src="@drawable/tick_peach"
+                    android:visibility="invisible"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>
@@ -404,35 +415,35 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/buttonsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonsLayout"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/websiteButton"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="55dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/button_shape"
             android:fontFamily="@font/calibri"
             android:text="Eclass by CueKids"
-            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:backgroundTint="@color/purple_200"
             tools:ignore="HardcodedText" />
 
-            <ImageView
-                android:layout_marginTop="25dp"
-                android:id="@+id/logoutbutton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_power_settings_new_24"
-                tools:ignore="ContentDescription" />
+        <ImageView
+            android:id="@+id/logoutbutton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/ic_baseline_power_settings_new_24"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 
@@ -443,8 +454,8 @@
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:indeterminate="true"
-        android:visibility="gone"
-        android:indeterminateDrawable="@drawable/progress_bar" />
+        android:indeterminateDrawable="@drawable/progress_bar"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"

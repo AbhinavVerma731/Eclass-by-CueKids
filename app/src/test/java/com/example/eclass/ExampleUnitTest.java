@@ -1,4 +1,4 @@
-package com.cuekids.cuekids;
+package com.cuekids.eclass;
 
 import org.junit.Test;
 

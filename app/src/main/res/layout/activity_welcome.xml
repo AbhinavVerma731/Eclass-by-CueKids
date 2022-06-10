@@ -4,126 +4,183 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/purple_200"
     tools:context=".WelcomeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/layout_border">
+        android:layout_height="360dp"
+        android:background="@drawable/welcome_background"
+        android:orientation="vertical">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="320dp"
-        android:layout_height="290dp"
-        android:layout_marginTop="80dp"
-        android:layout_gravity="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/gotham"
+            android:text="Become a stronger YOU!!"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="300dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/sliderDots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/gotham"
+            android:gravity="center"
+            android:text="Developed by specialists in non verbal communication since 2013"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/sliderDots"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="7dp"
+        android:weightSum="2">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="0.3"
+            android:src="@drawable/tick_blue"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.7"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Learn with kids across the globe"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:weightSum="2">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="0.3"
+            android:src="@drawable/tick_peach"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.7"
+            android:fontFamily="@font/poppins_regular"
+            android:text="New events every week"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:weightSum="2">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="0.3"
+            android:src="@drawable/tick_teal"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.7"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Personalized inputs from teachers"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="0.3"
+            android:src="@drawable/tick_light_yellow"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.7"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Support team ready to help"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_vertical|center_horizontal" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/gotham"
-        android:textSize="26sp"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:layout_marginStart="15dp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="15dp"
-        android:text="CueKids HighLights!" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
         android:weightSum="2">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:src="@drawable/fui_ic_check_circle_black_128dp"
-            android:layout_weight="0.5" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1.5"
-            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/calibri"
-            android:textSize="20sp"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1.5"
+            android:fontFamily="@font/poppins_medium"
+            android:text="If you are 6-12 years old, step into a world where learning is fun and engaging!!"
             android:textColor="@color/black"
-            android:text="Abcdef Ghijkl" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:weightSum="2">
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <ImageView
+            android:id="@+id/goToLogin"
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:src="@drawable/fui_ic_check_circle_black_128dp"
-            android:layout_weight="0.5" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1.5"
+            android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/calibri"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:text="Mnopq Qrst" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:src="@drawable/fui_ic_check_circle_black_128dp"
-            android:layout_weight="0.5" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1.5"
-            android:layout_gravity="center_vertical"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/calibri"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:text="Uvw Xyz" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/goToLogin"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:textSize="15sp"
-        android:textAllCaps="false"
-        android:layout_gravity="end"
-        android:textColor="@color/black"
-        android:fontFamily="@font/calibri"
-        android:background="@drawable/button_shape"
-        android:layout_marginEnd="20dp"
-        android:text="Let's GO" />
+            android:layout_weight="0.5"
+            android:src="@drawable/ic_baseline_arrow_forward_24"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 

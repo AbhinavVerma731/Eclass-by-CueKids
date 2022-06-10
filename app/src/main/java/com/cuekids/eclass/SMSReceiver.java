@@ -73,6 +73,7 @@ public class SMSReceiver extends BroadcastReceiver {
     }
 
     public interface OTPReceiveListener {
+
         void onOTPReceived(String otp);
 
         void onOTPTimeOut();
