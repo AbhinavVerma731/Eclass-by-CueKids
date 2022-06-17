@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
+
 import com.cuekids.eclass.databinding.ActivityLoginBinding;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
@@ -95,9 +96,11 @@ public class LoginActivity extends AppCompatActivity {
                         smsReceiver = null;
                     }
                 }
+
                 @Override
                 public void onOTPTimeOut() {
                 }
+
                 @Override
                 public void onOTPReceivedError(String error) {
                 }
@@ -175,28 +178,27 @@ public class LoginActivity extends AppCompatActivity {
 
                 binding.phoneLayout.setVisibility(View.GONE);
                 binding.otplayout.setVisibility(View.VISIBLE);
-                if(newAccount.equals("yes"))
+                if (newAccount.equals("yes"))
                     binding.finalloginbutton.setText("Next");
                 binding.otpinputlayout.startAnimation(btgone);
                 binding.finalloginbutton.startAnimation(btgtwo);
                 Toast.makeText(LoginActivity.this, "We are sending you an OTP", Toast.LENGTH_SHORT).show();
                 sendVerificationCode(phone);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
 
-    private void redirecting()
-    {
-        if(newAccount.equals("yes")) {
+    private void redirecting() {
+        if (newAccount.equals("yes")) {
             Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
             i.putExtra("phone", phone);
             startActivity(i);
             finish();
-        }
-        else {
+        } else {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
             Query checkUser = reference.orderByChild("phone").equalTo(phoneFromDB);
             checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -224,6 +226,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                 }

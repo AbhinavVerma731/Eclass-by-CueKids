@@ -37,17 +37,15 @@ public class coursesFragment extends Fragment implements SwipeRefreshLayout.OnRe
             }
         }
     }
-    
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
     private FragmentCoursesBinding binding;
 
     public coursesFragment() {
         // Required empty public constructor
     }
-    
+
     public static coursesFragment newInstance(String param1, String param2) {
         coursesFragment fragment = new coursesFragment();
         Bundle args = new Bundle();
@@ -61,8 +59,8 @@ public class coursesFragment extends Fragment implements SwipeRefreshLayout.OnRe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -70,7 +68,7 @@ public class coursesFragment extends Fragment implements SwipeRefreshLayout.OnRe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        
+
         binding = FragmentCoursesBinding.inflate(inflater, container, false);
 
 //        if (getSupportActionBar() != null) {

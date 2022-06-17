@@ -15,6 +15,7 @@ import android.webkit.WebViewClient;
 
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.cuekids.eclass.databinding.FragmentFunCornerBinding;
 
 public class funCornerFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -39,8 +40,6 @@ public class funCornerFragment extends Fragment implements SwipeRefreshLayout.On
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
     private FragmentFunCornerBinding binding;
 
     public funCornerFragment() {
@@ -60,8 +59,8 @@ public class funCornerFragment extends Fragment implements SwipeRefreshLayout.On
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 

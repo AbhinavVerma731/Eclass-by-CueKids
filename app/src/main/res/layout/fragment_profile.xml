@@ -78,8 +78,8 @@
                 android:id="@+id/subLayoutOne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginBottom="15dp"
+                android:layout_weight="1"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -114,12 +114,12 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/mlight"
                         android:hint="Name"
-                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:inputType="text"
                         android:maxLines="1"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textColorLink="#000000"
+                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp">
@@ -134,8 +134,8 @@
                     android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.2"
-                    android:visibility="invisible"
                     android:src="@drawable/tick_peach"
+                    android:visibility="invisible"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>
@@ -145,15 +145,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:weightSum="1"
                 android:orientation="horizontal"
+                android:weightSum="1"
                 tools:ignore="RtlHardcoded">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="27dp"
-                    android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="0.2"
                     android:src="@drawable/ic_baseline_local_phone_24"
                     tools:ignore="ContentDescription,NestedWeights" />
 
@@ -182,12 +182,12 @@
                         android:baselineAligned="false"
                         android:fontFamily="@font/mlight"
                         android:hint="Phone Number"
-                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:inputType="number"
                         android:maxLines="1"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textColorLink="#000000"
+                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp">
@@ -219,7 +219,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:baselineAligned="false"
-                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:fontFamily="@font/mlight"
                         android:hint="Enter OTP"
                         android:inputType="number"
@@ -228,6 +227,7 @@
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textColorLink="#000000"
+                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp">
@@ -272,9 +272,9 @@
                 android:id="@+id/subLayoutThree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
                 android:layout_marginBottom="15dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:weightSum="1"
                 tools:ignore="RtlHardcoded">
 
@@ -309,12 +309,12 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/mlight"
                         android:hint="Email Id"
-                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:inputType="text"
                         android:maxLines="1"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textColorLink="#000000"
+                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp">
@@ -339,8 +339,8 @@
                 android:id="@+id/subLayoutFour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_weight="1"
+                android:orientation="horizontal"
                 android:weightSum="1"
                 tools:ignore="RtlHardcoded">
 
@@ -378,10 +378,10 @@
                         android:inputType="number"
                         android:maxLength="3"
                         android:maxLines="1"
-                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:textColor="#000000"
                         android:textColorHint="#000000"
                         android:textColorLink="#000000"
+                        android:textCursorDrawable="@drawable/blue_cursor_color"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         tools:ignore="HardcodedText,SmallSp">

@@ -117,11 +117,11 @@
                     android:fontFamily="@font/mlight"
                     android:hint="Phone Number"
                     android:inputType="number"
-                    android:textCursorDrawable="@drawable/blue_cursor_color"
                     android:maxLines="1"
                     android:textColor="#000000"
                     android:textColorHint="@color/black"
                     android:textColorLink="#000000"
+                    android:textCursorDrawable="@drawable/blue_cursor_color"
                     android:textSize="13sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText">
@@ -195,7 +195,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:textCursorDrawable="@drawable/blue_cursor_color"
                 android:fontFamily="@font/mlight"
                 android:gravity="center"
                 android:hint="Enter OTP"
@@ -205,6 +204,7 @@
                 android:textColor="#000000"
                 android:textColorHint="#000000"
                 android:textColorLink="#000000"
+                android:textCursorDrawable="@drawable/blue_cursor_color"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 tools:ignore="HardcodedText">

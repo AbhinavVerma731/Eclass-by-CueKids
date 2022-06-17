@@ -49,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
         binding.btnSignup.startAnimation(btgtwo);
 
         binding.btnSignup.setOnClickListener(v -> {
-            if(validateFirstName() && validateLastName() && validateEmail() && validateAge())
+            if (validateFirstName() && validateLastName() && validateEmail() && validateAge())
                 signUpUser();
         });
     }
@@ -94,8 +94,7 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
     }
 
-    public void signUpUser()
-    {
+    public void signUpUser() {
         binding.progressBar.setVisibility(View.VISIBLE);
         binding.progressBar.startAnimation(btgtwo);
         String firstName = Objects.requireNonNull(binding.firstNameInputLayout.getEditText()).getText().toString();
@@ -128,6 +127,7 @@ public class SignUpActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }

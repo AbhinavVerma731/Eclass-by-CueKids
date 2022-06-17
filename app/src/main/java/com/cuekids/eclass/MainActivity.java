@@ -1,5 +1,6 @@
 package com.cuekids.eclass;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,7 +12,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements  BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView btn;
 
@@ -40,11 +41,11 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.menu_home:
                 fm.beginTransaction().hide(active).show(f1).commit();
                 active = f1;
@@ -75,10 +76,8 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
     }
 
     @Override
-    public void onBackPressed()
-    {
-        if(btn.getSelectedItemId() == R.id.menu_home)
-        {
+    public void onBackPressed() {
+        if (btn.getSelectedItemId() == R.id.menu_home) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Are you sure");
             builder.setMessage("You want to exit ?");
@@ -90,9 +89,7 @@ public class MainActivity extends AppCompatActivity implements  BottomNavigation
             builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
-        }
-        else
-        {
+        } else {
             btn.setSelectedItemId(R.id.menu_home);
         }
     }

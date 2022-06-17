@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.hardware.input.InputManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -53,8 +52,6 @@ public class profileFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
 
     private FragmentProfileBinding binding;
     SharedPreferences shp;
@@ -85,8 +82,8 @@ public class profileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -122,20 +119,20 @@ public class profileFragment extends Fragment {
         Objects.requireNonNull(binding.phoneInputLayout.getEditText()).setText(phone);
         Objects.requireNonNull(binding.ageInputLayout.getEditText()).setText(age);
 
-        if(downloadImageUrl.equals("empty"))
+        if (downloadImageUrl.equals("empty"))
             binding.iupload.setBackgroundResource(R.drawable.ic_baseline_person_24);
         else
             Glide.with(binding.iupload.getContext()).load(downloadImageUrl).circleCrop().into(binding.iupload);
 
         final ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
                 uri -> {
-                    if(uri != null ){
+                    if (uri != null) {
                         Toast.makeText(getContext(), "Uploading. Please Wait", Toast.LENGTH_SHORT).show();
                         binding.buttonsLayout.setVisibility(View.GONE);
                         binding.progressBar.setVisibility(View.VISIBLE);
                         binding.progressBar.startAnimation(btgtwo);
                         profileUri = uri;
-                        imagePathName = UUID.randomUUID().toString()+".jpg";
+                        imagePathName = UUID.randomUUID().toString() + ".jpg";
                         uploadPhoto();
                     }
                 });
@@ -178,12 +175,10 @@ public class profileFragment extends Fragment {
         binding.iupload.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("Change profile picture");
-            builder.setPositiveButton("Upload", (dialog, which) -> {
-                mGetContent.launch("image/*");
-            });
+            builder.setPositiveButton("Upload", (dialog, which) -> mGetContent.launch("image/*"));
             builder.setNegativeButton("Remove", (dialog, which) -> {
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-                Query checkUser =  reference.orderByChild("phone").equalTo(phone);
+                Query checkUser = reference.orderByChild("phone").equalTo(phone);
                 checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -197,6 +192,7 @@ public class profileFragment extends Fragment {
                         binding.iupload.setImageDrawable(null);
                         binding.iupload.setBackgroundResource(R.drawable.ic_baseline_person_24);
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                     }
@@ -208,7 +204,7 @@ public class profileFragment extends Fragment {
 
         binding.nameUpdateButton.setOnClickListener(v -> {
             String tempName = binding.nameInputLayout.getEditText().getText().toString();
-            if(!tempName.equals(name) && validateName())
+            if (!tempName.equals(name) && validateName())
                 updateName(tempName);
             binding.nameEditText.clearFocus();
             hideKeyboard();
@@ -217,7 +213,7 @@ public class profileFragment extends Fragment {
 
         binding.phoneUpdateButton.setOnClickListener(v -> {
             tempPhone = binding.phoneInputLayout.getEditText().getText().toString();
-            if(!tempPhone.equals(phone) && validatePhone())
+            if (!tempPhone.equals(phone) && validatePhone())
                 alreadyExists();
             binding.phoneEditText.clearFocus();
             hideKeyboard();
@@ -226,7 +222,7 @@ public class profileFragment extends Fragment {
 
         binding.emailUpdateButton.setOnClickListener(v -> {
             String tempEmail = binding.emailIdInputLayout.getEditText().getText().toString();
-            if(!tempEmail.equals(email) && validateEmail())
+            if (!tempEmail.equals(email) && validateEmail())
                 updateEmail(tempEmail);
             binding.emailIdEditText.clearFocus();
             hideKeyboard();
@@ -235,7 +231,7 @@ public class profileFragment extends Fragment {
 
         binding.ageUpdateButton.setOnClickListener(v -> {
             String tempAge = binding.ageInputLayout.getEditText().getText().toString();
-            if(!tempAge.equals(age) && validateAge())
+            if (!tempAge.equals(age) && validateAge())
                 updateAge(tempAge);
             binding.ageEditText.clearFocus();
             hideKeyboard();
@@ -271,8 +267,7 @@ public class profileFragment extends Fragment {
         return binding.getRoot();
     }
 
-    public void hideKeyboard()
-    {
+    public void hideKeyboard() {
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
@@ -282,19 +277,19 @@ public class profileFragment extends Fragment {
         StorageReference imageRef = storageReference.child("UserProfileImages").child(imagePathName);
         UploadTask uploadTask = imageRef.putFile(profileUri);
         Task<Uri> urlTask = uploadTask.continueWithTask(task -> {
-            if(!task.isSuccessful()){
+            if (!task.isSuccessful()) {
                 throw Objects.requireNonNull(task.getException());
             }
             return imageRef.getDownloadUrl();
         }).addOnCompleteListener(task -> {
-            if(task.isComplete()){
+            if (task.isComplete()) {
                 downloadImageUrl = task.getResult().toString();
                 binding.progressBar.setVisibility(View.GONE);
                 binding.buttonsLayout.setVisibility(View.VISIBLE);
                 binding.buttonsLayout.startAnimation(btgtwo);
                 Glide.with(binding.iupload.getContext()).load(profileUri).circleCrop().into(binding.iupload);
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-                Query checkUser =  reference.orderByChild("phone").equalTo(phone);
+                Query checkUser = reference.orderByChild("phone").equalTo(phone);
                 checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -306,6 +301,7 @@ public class profileFragment extends Fragment {
                         shpEditor.apply();
                         Toast.makeText(getContext(), "Profile Picture Uploaded", Toast.LENGTH_LONG).show();
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                     }
@@ -331,9 +327,11 @@ public class profileFragment extends Fragment {
                         smsReceiver = null;
                     }
                 }
+
                 @Override
                 public void onOTPTimeOut() {
                 }
+
                 @Override
                 public void onOTPReceivedError(String error) {
                 }
@@ -415,16 +413,14 @@ public class profileFragment extends Fragment {
 
     public void alreadyExists() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUser =  reference.orderByChild("phone").equalTo(tempPhone);
+        Query checkUser = reference.orderByChild("phone").equalTo(tempPhone);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.exists())
-                {
+                if (dataSnapshot.exists()) {
                     Toast.makeText(getActivity(), "This phone number is already registered with us", Toast.LENGTH_LONG).show();
-                }
-                else {
+                } else {
                     binding.phoneInputLayout.setVisibility(View.GONE);
                     binding.phoneUpdateButton.setVisibility(View.GONE);
                     binding.otpInputLayout.setVisibility(View.VISIBLE);
@@ -434,6 +430,7 @@ public class profileFragment extends Fragment {
                     sendVerificationCode(tempPhone);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -442,7 +439,7 @@ public class profileFragment extends Fragment {
 
     private void updateName(String tempName) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUser =  reference.orderByChild("phone").equalTo(phone);
+        Query checkUser = reference.orderByChild("phone").equalTo(phone);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -455,6 +452,7 @@ public class profileFragment extends Fragment {
                 name = tempName;
                 Toast.makeText(getActivity(), "Name Updated Successfully", Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -463,7 +461,7 @@ public class profileFragment extends Fragment {
 
     private void updatePhone() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUser =  reference.orderByChild("phone").equalTo(phone);
+        Query checkUser = reference.orderByChild("phone").equalTo(phone);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -476,6 +474,7 @@ public class profileFragment extends Fragment {
                 phone = tempPhone;
                 Toast.makeText(getActivity(), "Phone Number updated successfully !", Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -484,7 +483,7 @@ public class profileFragment extends Fragment {
 
     private void updateEmail(String tempEmail) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUser =  reference.orderByChild("phone").equalTo(phone);
+        Query checkUser = reference.orderByChild("phone").equalTo(phone);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -497,6 +496,7 @@ public class profileFragment extends Fragment {
                 email = tempEmail;
                 Toast.makeText(getActivity(), "Email Updated Successfully", Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -505,7 +505,7 @@ public class profileFragment extends Fragment {
 
     private void updateAge(String tempAge) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUser =  reference.orderByChild("phone").equalTo(phone);
+        Query checkUser = reference.orderByChild("phone").equalTo(phone);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -518,6 +518,7 @@ public class profileFragment extends Fragment {
                 age = tempAge;
                 Toast.makeText(getActivity(), "Age Updated Successfully", Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
