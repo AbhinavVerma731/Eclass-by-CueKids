@@ -4,18 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WebViewActivity">
+    tools:context=".funCornerFragment">
+
+    <LinearLayout
+        android:id="@+id/backButtonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/purple_200"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="10dp"
+            android:tint="@color/black"
+            android:layout_marginBottom="7dp"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+
+    </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh"
         android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
         android:layout_height="match_parent">
 
         <WebView
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -24,13 +45,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:layout_marginTop="70dp"
         android:orientation="vertical"
         android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:fontFamily="@font/gotham"
             android:text="No Internet"
             android:textColor="@color/purple_500"
