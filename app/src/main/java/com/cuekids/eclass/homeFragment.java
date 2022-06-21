@@ -89,7 +89,7 @@ public class homeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         webSettings.setLoadsImagesAutomatically(true);
         binding.webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        String url = "https://mobile.twitter.com";
+        String url = "https://eclass.cuekids.in";
         setWebView(url);
 
         binding.swiperefresh.setOnRefreshListener(() -> {

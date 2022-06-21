@@ -89,7 +89,7 @@ public class coursesFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
         webSettings.setLoadsImagesAutomatically(true);
         binding.webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        String url = "https://eclass.cuekids.in";
+        String url = "https://eclass.cuekids.in/membership-cuekids-eclass/";
         setWebView(url);
 
         binding.swiperefresh.setOnRefreshListener(() -> {

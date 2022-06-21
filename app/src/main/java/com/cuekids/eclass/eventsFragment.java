@@ -89,7 +89,7 @@ public class eventsFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
         webSettings.setLoadsImagesAutomatically(true);
         binding.webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        String url = "https://www.instagram.com";
+        String url = "https://eclass.cuekids.in/meet-ups/";
         setWebView(url);
 
         binding.swiperefresh.setOnRefreshListener(() -> {

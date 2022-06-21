@@ -89,7 +89,7 @@ public class funCornerFragment extends Fragment implements SwipeRefreshLayout.On
 
         webSettings.setLoadsImagesAutomatically(true);
         binding.webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        String url = "https://m.facebook.com";
+        String url = "https://eclass.cuekids.in/fun-corner/";
         setWebView(url);
 
         binding.swiperefresh.setOnRefreshListener(() -> {
